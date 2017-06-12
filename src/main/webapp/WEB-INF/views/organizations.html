@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="ISO-8859-1" />
+
+<title>Organizations</title>
+
+</head>
+
+<body>
+	
+	<font color="red"><p th:text="${orgError}"></p></font>
+
+	<a href="#" th:href="@{/organizations/new}">ADD</a>
+
+	<br />
+	<br /> Organizations:
+
+	<table>
+
+		<tr th:each="organization : ${organizationsOwners}">
+
+			<td th:text="${organization.name}"></td>
+
+			<td><a href="#"
+				th:href="@{'/organization/' + ${organization.id}+'/members'}">Members</a></td>
+
+		</tr>
+
+	</table>
+
+
+
+	Organizations As Member:
+
+	<table>
+
+		<tr th:each="organization : ${organizationsNotOwner}">
+
+			<td th:text="${organization.name}"></td>
+
+			<td><a href="#"
+				th:href="@{'/organization/' + ${organization.id}+'/members'}">Members</a></td>
+
+		</tr>
+
+	</table>
+
+
+
+</body>
+
+</html>

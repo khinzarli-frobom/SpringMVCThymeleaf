@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Organization Member Lists</title>
+</head>
+<body>
+<h3>Organization Member Lists</h3>
+<div th:each="orgMember : ${orgMembers}">
+			<div th:text="${orgMember.name}"></div>
+		</div>
+</body>
+</html>

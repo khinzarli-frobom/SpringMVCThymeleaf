@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>ADD New Organization</h2>
+	<form action="#" th:action="@{/neworganization}"
+		th:object="${organization}" method="post">
+
+		<font color="red">
+			<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+		</font> <font color="red">
+			<p th:if="${#fields.hasErrors('description')}"
+				th:errors="*{description}"></p>
+		</font> <input type="text" th:field="*{name}" placeholder="Name" /> <input
+			type="text" th:field="*{description}" placeholder="Description" /> <input
+			type="submit" value="ADD" />
+	</form>
+</body>
+</html>

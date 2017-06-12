@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Add Organization Member List</title>
+</head>
+<body>
+	<h4>
+		<font color="green"> Add New Organization Member </font>
+	</h4>
+
+	<font color="red"><p th:text="${noNameError}"></p></font>
+	<font color="red"><p th:text="${existMember}"></p></font>
+
+	<form action="#"
+		th:action="@{'/organization/'+${orgId}+'/members/new'}"
+		th:object="${user}" method="post">
+
+		<table>
+			<tr>
+				<td>Member Name</td>
+				<td><input type="text" th:field="*{name}"
+					placeholder="Enter Member Name" /></td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Add" /></td>
+			</tr>
+		</table>
+
+		<div th:each="orgMember : ${orgMembers}">
+			<div th:text="${orgMember.name}"></div>
+		</div>
+	</form>
+
+</body>
+</html>
