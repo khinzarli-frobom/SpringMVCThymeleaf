@@ -12,6 +12,8 @@
 
 	<font color="red"><p th:text="${noNameError}"></p></font>
 	<font color="red"><p th:text="${existMember}"></p></font>
+	<font color="red"><p th:text="${userNameEmptyError}"></p></font>
+
 
 	<form action="#"
 		th:action="@{'/organization/'+${orgId}+'/members/new'}"
