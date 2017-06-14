@@ -8,13 +8,16 @@
 <body>
 
 	<font color="red"><p th:text="${message}"></p></font>
-	
+
 	<form action="#" th:action="@{/loginuser}" th:object="${user}"
 		method="post">
 		<input type="text" th:field="*{name}" placeholder="Name" /> <input
-			type="text" th:field="*{password}" placeholder="password" /> <input
+			type="password" th:field="*{password}" placeholder="password" /> <input
 			type="submit" value="login" />
 	</form>
-	
+
+	<a href="#" th:href="@{registeration}">Register</a>
+
+
 </body>
 </html>

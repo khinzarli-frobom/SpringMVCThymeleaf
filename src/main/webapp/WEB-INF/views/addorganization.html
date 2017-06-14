@@ -16,7 +16,9 @@
 		</font> <font color="red">
 			<p th:if="${#fields.hasErrors('description')}"
 				th:errors="*{description}"></p>
-		</font> <input type="text" th:field="*{name}" placeholder="Name" /> <input
+		</font> 
+		<input type="text" th:field="*{name}" placeholder="Name" />
+		 <input
 			type="text" th:field="*{description}" placeholder="Description" /> <input
 			type="submit" value="ADD" />
 	</form>

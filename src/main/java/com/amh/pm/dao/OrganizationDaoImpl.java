@@ -19,15 +19,12 @@ import com.amh.pm.entity.User;
 public class OrganizationDaoImpl implements OrganizationDao {
 
 	@PersistenceContext
-
 	private EntityManager entityManager;
 
 	@Override
 
 	public void save(Organization organization) {
-
 		// TODO Auto-generated method stub
-
 		entityManager.merge(organization);
 
 	}

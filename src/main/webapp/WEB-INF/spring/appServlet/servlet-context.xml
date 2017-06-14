@@ -47,6 +47,15 @@
 	<bean id="organizationService" class="com.amh.pm.service.OrganizationServiceImpl">
 		<property name="organizationDao" ref="organizationDao"></property>
 	</bean>
+	
+	<!-- Project Inject -->
+	<bean id="projectDao" class="com.amh.pm.dao.ProjectDaoImpl">
+	</bean>
+
+	<bean id="projectService" class="com.amh.pm.service.ProjectServiceImpl">
+		<property name="projectDao" ref="projectDao"></property>
+	</bean>
+	
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

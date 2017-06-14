@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Project Lists</title>
+</head>
+<body>
+	<h3>Project Lists</h3>
+	<div th:each="projectName : ${projectNames}">
+		<div th:text="${projectName.name}"></div>
+	</div>
+	
+	<a href="#"
+		th:href="@{'/organizations/' + ${organizationId}+'/projects/new'}">AddNew</a>
+</body>
+</html>

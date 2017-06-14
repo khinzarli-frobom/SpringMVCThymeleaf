@@ -21,4 +21,6 @@ public interface UserDao {
 	public List<User> findUserNameByOrgnId(int orgId);
 
 	public User findUserIdByName(String userName);
+	
+	public User findUserIdByEmail(String userEmail);
 }

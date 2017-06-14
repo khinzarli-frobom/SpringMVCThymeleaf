@@ -22,115 +22,113 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table
 public class User {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	@Column(name = "name", nullable = false, unique = true)
-	@NotNull
-	@NotEmpty(message = "Please enter your name")
-	private String name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-	@Column(name = "email", nullable = false, unique = true)
-	@Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\." + "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
-			+ "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",
+    @Column(name = "name", nullable = false, unique = true)
 
-			message = "Invalid e-mail")
-	@NotEmpty(message = "Please enter your password.")
-	private String email;
-	@NotNull
-	@Column(name = "password", nullable = false, unique = false)
-	@NotEmpty(message = "Please enter your password.")
-	@Size(min = 3, max = 80, message = "Your password must between 3 and 80 characters")
-	private String password;
-	@OneToMany(mappedBy = "user")
-	private List<ProjectMember> project;
+    @NotEmpty
+    private String name;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "OrganizationMember", joinColumns = @JoinColumn(name = "userId", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "organizationId", referencedColumnName = "id"))
-	private List<Organization> orgList;
+    @Column(name = "email", nullable = false, unique = true)
+    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\." + "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+            + "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid e-mail")
+    @NotEmpty
+    private String email;
 
-	public User() {
-		super();
-	}
+    @Column(name = "password", nullable = false, unique = false)
+    @NotEmpty
+    @Size(min = 3, max = 80, message = "Your password must between 3 and 80 characters")
+    private String password;
 
-	public User(String email, String name, String password) {
-		super();
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "ProjectMember", joinColumns = @JoinColumn(name = "userId", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "projectId", referencedColumnName = "id"))
+    private List<Project> projects;
 
-		this.email = email;
-		this.name = name;
-		this.password = password;
-	}
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "OrganizationMember", joinColumns = @JoinColumn(name = "userId", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "organizationId", referencedColumnName = "id"))
+    private List<Organization> orgList;
 
-	public int getId() {
-		return id;
-	}
+    public User() {
+        super();
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public User(String email, String name, String password) {
+        super();
 
-	public String getName() {
-		return name;
-	}
+        this.email = email;
+        this.name = name;
+        this.password = password;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public List<ProjectMember> getProject() {
-		return project;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setProject(List<ProjectMember> project) {
-		this.project = project;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public List<Organization> getOrgList() {
-		return orgList;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setOrgList(List<Organization> orgList) {
-		this.orgList = orgList;
-	}
+    public List<Organization> getOrgList() {
+        return orgList;
+    }
 
-	/*
-	 * @Override public boolean equals(Object obj) { if (obj == this) return
-	 * true; if (!(obj instanceof User)) return false; User user = (User) obj;
-	 * return user.getName() == this.getName() && user.getEmail() ==
-	 * this.getEmail() && user.getPassword() == this.getPassword(); }
-	 * 
-	 * @Override public int hashCode() { int result = 17; result = 31 * result +
-	 * name.hashCode(); result = 31 * result + email.hashCode(); result = 31 *
-	 * result + password.hashCode(); return result; }
-	 */
+    public void setOrgList(List<Organization> orgList) {
+        this.orgList = orgList;
+    }
 
-	@Override
-	public boolean equals(Object object) {
-		User user = (User) object;
-		if (user.id == this.id) {
-			return true;
-		}
-		return false;
-	}
+    public List<Project> getProjects() {
+        return projects;
+    }
 
-	@Override
-	public int hashCode() {
-		return id;
-	}
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }
+
+    /*
+     * @Override public boolean equals(Object obj) { if (obj == this) return true; if (!(obj instanceof User)) return false;
+     * User user = (User) obj; return user.getName() == this.getName() && user.getEmail() == this.getEmail() &&
+     * user.getPassword() == this.getPassword(); }
+     * @Override public int hashCode() { int result = 17; result = 31 * result + name.hashCode(); result = 31 * result +
+     * email.hashCode(); result = 31 * result + password.hashCode(); return result; }
+     */
+
+    @Override
+    public boolean equals(Object object) {
+        User user = (User) object;
+        if (user.id == this.id) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 }

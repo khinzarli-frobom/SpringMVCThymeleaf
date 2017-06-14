@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	
+
 	<font color="red"><p th:text="${orgError}"></p></font>
 
 	<a href="#" th:href="@{/organizations/new}">ADD</a>
@@ -28,6 +28,9 @@
 
 			<td><a href="#"
 				th:href="@{'/organization/' + ${organization.id}+'/members'}">Members</a></td>
+
+			<td><a href="#"
+				th:href="@{'/organizations/' + ${organization.id}+'/projects'}">Project</a></td>
 
 		</tr>
 
@@ -45,6 +48,9 @@
 
 			<td><a href="#"
 				th:href="@{'/organization/' + ${organization.id}+'/members'}">Members</a></td>
+
+			<td><a href="#"
+				th:href="@{'/organizations/' + ${organization.id}+'/projects'}">Project</a></td>
 
 		</tr>
 

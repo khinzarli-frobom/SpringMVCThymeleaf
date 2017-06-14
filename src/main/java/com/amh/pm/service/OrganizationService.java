@@ -15,5 +15,6 @@ public interface OrganizationService {
 	public List<Organization> findAll();
 	
 	public Organization findById(int id);
+	
 	public Organization findOrganizationByName(String orgName);
 }
